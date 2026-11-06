@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jeevan R | DevOps Engineer Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#b9e8cb; --surface:#e4fbec; --text:#0a3022; --muted:#2a6650; --line:#7fc79f;
+  --lime:#4d6b00; --amber:#8f5b00; --coral:#b53a20; --aqua:#00705f; --lilac:#6a35b8;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0c3a2b; --surface:#124b38; --text:#ecfff5; --muted:#a9d9c3; --line:#1f6b52;
+    --lime:#c6f24e; --amber:#ffc857; --coral:#ff8c75; --aqua:#6ee7d3; --lilac:#d4b8ff;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0c3a2b; --surface:#124b38; --text:#ecfff5; --muted:#a9d9c3; --line:#1f6b52;
+  --lime:#c6f24e; --amber:#ffc857; --coral:#ff8c75; --aqua:#6ee7d3; --lilac:#d4b8ff;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.0625rem/1.65 var(--display);-webkit-font-smoothing:antialiased}
+.wrap{max-width:64rem;margin:0 auto;padding:0 1.25rem}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:6px}
+h1,h2,h3{margin:0;line-height:1.08}
+h2{font-size:clamp(1.8rem,4.5vw,2.5rem);font-weight:800;margin-bottom:.4rem}
+section{padding:3.5rem 0 .5rem}
+.sub{color:var(--muted);margin:0 0 1.6rem;max-width:40rem}
+
+/* hero */
+.hero{padding:3rem 0 1rem}
+.hero h1{font-size:clamp(2.5rem,8vw,5rem);font-weight:800;letter-spacing:-.025em;max-width:14ch}
+.hero .lead{max-width:38rem;margin:1.2rem 0 2rem;color:var(--muted);font-size:1.15rem}
+
+/* terminal (always dark, like a real terminal) */
+.term{background:#06241a;color:#d9fbe8;border:2px solid #0f5a40;border-radius:1rem;font:400 .95rem/1.6 var(--mono);overflow:hidden;box-shadow:8px 8px 0 #0f5a40}
+.bar{display:flex;align-items:center;gap:.4rem;padding:.6rem .9rem;background:#0b3a2a;color:#9ad8bb;font-size:.85rem}
+.bar i{width:.7rem;height:.7rem;border-radius:50%;background:#ff8c75}
+.bar i:nth-child(2){background:#ffc857}.bar i:nth-child(3){background:#c6f24e}
+.bar span{margin-left:.5rem}
+#out{padding:1rem 1rem .25rem;max-height:22rem;overflow:auto}
+#out p{margin:0 0 .35rem;overflow-wrap:anywhere}
+#out .you{color:#c6f24e}
+#out .ok{color:#6ee7d3}
+#out .warn{color:#ffc857}
+#out p.raw{white-space:pre;overflow-wrap:normal}
+.cmd{display:flex;gap:.6rem;align-items:center;padding:.5rem 1rem;border-top:1px solid #0f5a40}
+.cmd span{color:#c6f24e}
+.cmd input{flex:1;min-width:0;background:transparent;border:0;color:#fff;font:inherit;padding:.4rem 0}
+.cmd input:focus-visible{outline:none}
+.cmd:focus-within{background:#0a3324}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;padding:.25rem 1rem 1rem}
+.chips button{font:inherit;font-size:.85rem;color:#06241a;background:#c6f24e;border:0;border-radius:999px;padding:.35rem .85rem;cursor:pointer;font-weight:700}
+.chips button:nth-child(2){background:#ffc857}.chips button:nth-child(3){background:#6ee7d3}
+.chips button:nth-child(4){background:#ff8c75}.chips button:nth-child(5){background:#d4b8ff}
+.chips button:nth-child(6){background:#e4fbec}
+.chips button:nth-child(7){background:#6ee7d3}.chips button:nth-child(8){background:#ff8c75}.chips button:nth-child(9){background:#d4b8ff}.chips button:nth-child(10){background:#ffc857}.chips button:nth-child(11){background:#c6f24e}
+
+/* skills */
+.lanes{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr))}
+.lane{background:var(--surface);border:2px solid var(--line);border-radius:1.25rem;padding:1.25rem;border-top:8px solid var(--c)}
+.lane h3{font-size:1.25rem}
+.lane p{margin:.2rem 0 1rem;color:var(--muted);font-size:.98rem}
+.lane:nth-child(1){--c:var(--lime)}.lane:nth-child(2){--c:var(--coral)}.lane:nth-child(3){--c:var(--aqua)}
+.skill-row{display:flex;flex-wrap:wrap;gap:.5rem}
+.skill{font:700 .88rem var(--mono);color:var(--text);background:transparent;border:2px solid var(--c);border-radius:.6rem;padding:.3rem .7rem;cursor:pointer}
+.skill small{font-weight:400;color:var(--muted);margin-left:.35rem}
+.skill[aria-pressed="true"]{background:var(--c);color:var(--bg)}
+.skill[aria-pressed="true"] small{color:inherit}
+#skillnote{margin:1rem 0 0;font-weight:700;min-height:1.6em}
+.more{margin-top:1rem;color:var(--muted)}
+
+/* projects */
+.projects{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,21rem),1fr))}
+.proj{background:var(--surface);border:2px solid var(--line);border-left:10px solid var(--c);border-radius:1.25rem;padding:1.4rem;transition:opacity .25s}
+.proj.big{grid-column:1/-1;padding:1.75rem}
+.proj.dim{opacity:.3}
+.proj{position:relative}
+.proj:has(.live){cursor:pointer}
+.proj:has(.live):hover{box-shadow:6px 6px 0 var(--c)}
+.live{display:inline-block;margin-top:1.1rem;font-weight:800;color:var(--c);text-decoration:underline;text-underline-offset:4px}
+.live::after{content:"";position:absolute;inset:0;border-radius:1.25rem}
+.live:focus-visible::after{outline:3px solid var(--amber);outline-offset:3px}
+.proj .icon{font-size:2rem;line-height:1}
+.proj h3{font-size:1.35rem;margin:.5rem 0 .7rem}
+.proj.big h3{font-size:1.8rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1rem;padding:0;list-style:none}
+.tags li{font:700 .8rem var(--mono);padding:.15rem .6rem;border-radius:.5rem;color:var(--c);border:1.5px solid var(--c)}
+ul.emo{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
+ul.emo li{display:grid;grid-template-columns:2rem 1fr}
+.shows{margin:1.1rem 0 0;padding-top:.9rem;border-top:2px dashed var(--line);font-weight:700}
+.p1{--c:var(--lime)}.p2{--c:var(--amber)}.p3{--c:var(--coral)}.p4{--c:var(--aqua)}.p5{--c:var(--lilac)}
+
+/* contact */
+.contact{margin:3.5rem 0 2rem;padding:2rem;border-radius:1.5rem;background:#06241a;color:#ecfff5;box-shadow:8px 8px 0 #0f5a40}
+.contact h2{color:#c6f24e}
+.contact p{margin:.4rem 0 1.4rem;max-width:34rem;color:#bfe8d2}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-block;padding:.75rem 1.3rem;border-radius:999px;font-weight:800;text-decoration:none;border:2px solid #c6f24e;color:#c6f24e}
+.btn.fill{background:#c6f24e;color:#06241a}
+footer{padding:.5rem 0 2.5rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<header class="hero">
+  <h1>I ship code, then make sure it doesn’t break at 3 a.m. 🌙</h1>
+  <p class="lead">Jeevan R, aspiring DevOps engineer from Coimbatore 🌴 I automate deployments with Jenkins, Docker, Terraform and Kubernetes, and I put a scanner in front of every image so bad builds never reach production 🛡️</p>
+
+  <div class="term" role="region" aria-label="Command line. Type a command or tap one of the buttons.">
+    <div class="bar"><i></i><i></i><i></i><span>jeevan@devops: ~</span></div>
+    <div id="out" aria-live="polite">
+      <p class="you">$ whoami</p>
+      <p>jeevan, DevOps engineer in training. AWS and Linux every day 🐧</p>
+      <p class="you">$ cat focus.txt</p>
+      <p>automate deployments, build scalable cloud infrastructure, keep systems reliable ☁️</p>
+      <p class="warn">Type /help, or try real commands: ls -l, git status, docker ps, kubectl get pods 😏</p>
+    </div>
+    <label class="cmd"><span>$</span><input id="cmd" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Command" placeholder="/projects"></label>
+    <div class="chips">
+      <button type="button" data-cmd="/projects">🧪 /projects</button>
+      <button type="button" data-cmd="/skills">🧰 /skills</button>
+      <button type="button" data-cmd="/deploy">🚀 /deploy</button>
+      <button type="button" data-cmd="/contact">📬 /contact</button>
+      <button type="button" data-cmd="/about">👋 /about</button>
+      <button type="button" data-cmd="/help">❓ /help</button>
+      <button type="button" data-cmd="/attendance">🔗 /attendance</button>
+      <button type="button" data-cmd="ls -l">🐧 ls -l</button>
+      <button type="button" data-cmd="git log --oneline">🌿 git log</button>
+      <button type="button" data-cmd="docker ps">🐳 docker ps</button>
+      <button type="button" data-cmd="kubectl get pods">☸️ kubectl get pods</button>
+    </div>
+  </div>
+</header>
+
+<section id="skills">
+  <h2>🧰 Skills that map to the DevOps loop</h2>
+  <p class="sub">Ship it, protect it, run it. Tap any skill and the projects that prove it light up below 👇</p>
+  <div class="lanes">
+    <div class="lane">
+      <h3>🔁 Ship it</h3><p>Automate build and delivery</p>
+      <div class="skill-row">
+        <button class="skill" data-skill="jenkins" aria-pressed="false">Jenkins</button>
+        <button class="skill" data-skill="docker" aria-pressed="false">Docker</button>
+        <button class="skill" data-skill="terraform" aria-pressed="false">Terraform</button>
+        <button class="skill" data-skill="kubernetes" aria-pressed="false">Kubernetes</button>
+        <button class="skill" data-skill="cicd" aria-pressed="false">CI/CD</button>
+        <button class="skill" data-skill="git" aria-pressed="false">Git and GitHub</button>
+        <button class="skill" data-skill="python" aria-pressed="false">Python</button>
+      </div>
+    </div>
+    <div class="lane">
+      <h3>🛡️ Protect it</h3><p>Scan, restrict, isolate</p>
+      <div class="skill-row">
+        <button class="skill" data-skill="trivy" aria-pressed="false">Trivy</button>
+        <button class="skill" data-skill="iam" aria-pressed="false">IAM</button>
+        <button class="skill" data-skill="sg" aria-pressed="false">Security Groups</button>
+        <button class="skill" data-skill="vpc" aria-pressed="false">VPC</button>
+      </div>
+    </div>
+    <div class="lane">
+      <h3>📈 Run it</h3><p>Host, balance, watch, recover</p>
+      <div class="skill-row">
+        <button class="skill" data-skill="ec2" aria-pressed="false">EC2</button>
+        <button class="skill" data-skill="elb" aria-pressed="false">ELB</button>
+        <button class="skill" data-skill="rds" aria-pressed="false">RDS</button>
+        <button class="skill" data-skill="ebs" aria-pressed="false">EBS</button>
+        <button class="skill" data-skill="cloudwatch" aria-pressed="false">CloudWatch</button>
+        <button class="skill" data-skill="apache" aria-pressed="false">Apache</button>
+        <button class="skill" data-skill="linux" aria-pressed="false">Linux</button>
+      </div>
+    </div>
+  </div>
+  <p id="skillnote" aria-live="polite"></p>
+  <p class="more">🎒 Also in the toolbox: S3, DynamoDB, Lambda, CloudFront, SNS, SQS, Route 53, Auto Scaling, Windows Server basics, Power BI, Figma, Excel</p>
+</section>
+
+<section id="projects">
+  <h2>🧪 Projects that run like production</h2>
+  <p class="sub">Five builds, from networking basics to a scanned, automated deployment pipeline.</p>
+  <div class="projects">
+
+    <article class="proj big p1" data-skills="terraform docker kubernetes jenkins trivy cicd python">
+      <div class="icon">🚀</div>
+      <h3>Automated DevOps deployment</h3>
+      <ul class="tags"><li>Terraform</li><li>Docker</li><li>Kubernetes</li><li>Jenkins</li><li>Trivy</li><li>AWS</li></ul>
+      <ul class="emo">
+        <li><span>🏗️</span><span>Designed and built an end-to-end CI/CD pipeline that deploys the application on AWS with no manual steps.</span></li>
+        <li><span>🐍</span><span>Wrote the app in Python Flask with an HTML/CSS frontend and a database backend, then containerized it with Docker.</span></li>
+        <li><span>🛡️</span><span>Added Trivy to the Jenkins pipeline so every Docker image is scanned for vulnerabilities before deployment.</span></li>
+      </ul>
+      <p class="shows">🎯 Shows: CI/CD, infrastructure as code, container security</p>
+    </article>
+
+    <article class="proj p2" data-skills="python docker jenkins linux ec2 rds cicd git">
+      <div class="icon">🧑‍💼</div>
+      <h3>Employee Attendance System</h3>
+      <ul class="tags"><li>Python</li><li>Docker</li><li>Jenkins</li><li>EC2</li><li>RDS</li></ul>
+      <ul class="emo">
+        <li><span>🐍</span><span>Built a Flask app on an AWS RDS MySQL database and containerized it with Docker.</span></li>
+        <li><span>🔔</span><span>Set up Jenkins on EC2 so each GitHub commit triggers the pipeline through a webhook.</span></li>
+        <li><span>📦</span><span>Automated the image build, the push to Docker Hub and the deployment of the live container.</span></li>
+      </ul>
+      <a class="live" href="https://employee-attendance-system-project.onrender.com/" target="_blank" rel="noopener">🔗 Open the live app</a>
+      <p class="shows">🎯 Shows: commit-triggered automation, container delivery</p>
+    </article>
+
+    <article class="proj p3" data-skills="ec2 vpc elb cloudwatch linux apache sg">
+      <div class="icon">🌐</div>
+      <h3>Highly available web app on AWS</h3>
+      <ul class="tags"><li>EC2</li><li>VPC</li><li>ELB</li><li>CloudWatch</li><li>Apache</li></ul>
+      <ul class="emo">
+        <li><span>🖥️</span><span>Deployed Linux web servers on EC2 inside a custom VPC.</span></li>
+        <li><span>🛣️</span><span>Configured subnets, route tables, an Internet Gateway, Security Groups and a load balancer.</span></li>
+        <li><span>📈</span><span>Installed Apache and watched the servers with CloudWatch.</span></li>
+      </ul>
+      <p class="shows">🎯 Shows: high availability, cloud networking</p>
+    </article>
+
+    <article class="proj p4" data-skills="cloudwatch ebs iam ec2 linux">
+      <div class="icon">📊</div>
+      <h3>AWS cloud monitoring and backup</h3>
+      <ul class="tags"><li>CloudWatch</li><li>EBS</li><li>IAM</li><li>EC2</li><li>Linux</li></ul>
+      <ul class="emo">
+        <li><span>📡</span><span>Configured CloudWatch monitoring for EC2 resources.</span></li>
+        <li><span>💾</span><span>Created EBS snapshots for backup and recovery.</span></li>
+        <li><span>🔧</span><span>Used metrics and Linux commands to troubleshoot problems.</span></li>
+      </ul>
+      <p class="shows">🎯 Shows: observability, backup and recovery</p>
+    </article>
+
+    <article class="proj p5" data-skills="vpc ec2 sg linux">
+      <div class="icon">🏢</div>
+      <h3>Three-tier architecture on AWS</h3>
+      <ul class="tags"><li>VPC</li><li>EC2</li><li>Security Groups</li><li>Linux</li></ul>
+      <ul class="emo">
+        <li><span>🧱</span><span>Designed a web, application and database architecture.</span></li>
+        <li><span>🔒</span><span>Used VPC networking and Security Groups to control how the tiers talk to each other.</span></li>
+        <li><span>🗺️</span><span>Configured the Linux EC2 servers and documented the traffic flow.</span></li>
+      </ul>
+      <p class="shows">🎯 Shows: secure network design</p>
+    </article>
+
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>📬 Got a pipeline that needs a hand?</h2>
+  <p>I’m open to DevOps Engineer roles and cloud projects. Send a message and I’ll answer fast 🤝</p>
+  <div class="btns">
+    <a class="btn fill" href="mailto:jeevanmaheshwari35@gmail.com">✉️ Email me</a>
+    <a class="btn" href="https://www.linkedin.com/in/jeevan-r-2005r">💼 LinkedIn</a>
+  </div>
+</section>
+
+<footer>Jeevan R, Coimbatore, India 🌴</footer>
+</main>
+
+<script>
+(function(){
+  var out=document.getElementById('out'), input=document.getElementById('cmd');
+  var calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function say(t,c){var p=document.createElement('p');if(c)p.className=c;p.textContent=t;out.appendChild(p);out.scrollTop=out.scrollHeight;}
+  function show(lines,c){lines.forEach(function(l){say(l===''?'\u00a0':l,'raw'+(c?' '+c:''));});}
+  function go(id){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:calm?'auto':'smooth',block:'start'});}
+  function deploy(){
+    var steps=[['🔀 git push origin main',''],['🐳 docker build and push','' ],['🛡️ trivy image scan','ok'],['🚢 kubectl apply -f deploy.yaml',''],['📈 monitoring enabled','ok'],['✅ pipeline green (demo run, nothing was harmed)','ok']];
+    steps.forEach(function(s,i){setTimeout(function(){say(s[0],s[1]);},calm?0:i*450);});
+  }
+  var cmds={
+    help:function(){
+      say('Navigate: /projects /skills /about /contact /attendance /deploy clear');
+      say('Linux: ls -l, pwd, whoami, df -h, free -h, uname -a, uptime, date, history');
+      say('Git: git status, git log --oneline, git branch, git commit -m "msg", git push');
+      say('Docker: docker ps, docker images, docker build -t app ., docker run -d app');
+      say('Kubectl: kubectl get pods, nodes, svc, deployments, kubectl apply -f deploy.yaml');
+      say('Also: terraform plan, trivy image app, aws --version. Press the up arrow for history.');
+      say('Demo terminal: outputs are simulated, nothing really runs 🙂','warn');
+    },
+    attendance:function(){openLive();},
+    live:function(){openLive();},
+    whoami:function(){say('jeevan');},
+    hi:function(){say('hello, world 👋');},
+    hello:function(){say('hello, world 👋');},
+    exit:function(){say('logout');say('Just kidding. You cannot leave my portfolio that easily 😏','warn');},
+    history:function(){show(past.map(function(c,i){return ('     '+(i+1)).slice(-5)+'  '+c;}));},
+    projects:function(){say('Jumping to projects 🧪','ok');go('projects');},
+    skills:function(){say('Jumping to skills 🧰','ok');go('skills');},
+    contact:function(){say('Opening contact 📬','ok');go('contact');},
+    about:function(){say('Jeevan R. Coimbatore. Hands-on with AWS and Linux, building toward a DevOps Engineer role.');say('I like automation, scanners that say no, and dashboards that stay green 🟢');},
+    deploy:deploy,
+    clear:function(){out.innerHTML='';}
+  };
+  var LIVE='https://employee-attendance-system-project.onrender.com/';
+  var APP='attendance-app', past=[], pi=0;
+  function tbl(rows){var w=[];rows.forEach(function(r){r.forEach(function(c,i){w[i]=Math.max(w[i]||0,c.length);});});return rows.map(function(r){return r.map(function(c,i){return i<r.length-1?c+Array(w[i]-c.length+4).join(' '):c;}).join('');});}
+  function hex(n){var s='';while(s.length<n)s+=Math.random().toString(16).slice(2);return s.slice(0,n);}
+  function openLive(){
+    say('Opening your attendance system 🔗','ok');
+    var p=document.createElement('p'),a=document.createElement('a');
+    a.href=LIVE;a.target='_blank';a.rel='noopener';a.textContent=LIVE;a.style.color='#6ee7d3';
+    p.appendChild(a);out.appendChild(p);out.scrollTop=out.scrollHeight;
+    window.open(LIVE,'_blank','noopener');
+  }
+  function build(t){return ['[+] Building 14.2s (9/9) FINISHED',' => [1/4] FROM docker.io/library/python:3.11-slim',' => [2/4] WORKDIR /app',' => [3/4] COPY requirements.txt . and pip install',' => [4/4] COPY . .',' => exporting to image',' => => naming to docker.io/library/'+t];}
+  var FLASK=[" * Serving Flask app 'app'",' * Running on http://0.0.0.0:5000','127.0.0.1 - - "GET / HTTP/1.1" 200 -'];
+  var LSS=['Dockerfile  Jenkinsfile  README.md  app.py  deploy.yaml  main.tf  requirements.txt  templates'];
+  var LSL=['total 32','-rw-r--r-- 1 jeevan jeevan  412 Nov  6 09:12 Dockerfile','-rw-r--r-- 1 jeevan jeevan  866 Nov  6 09:12 Jenkinsfile','-rw-r--r-- 1 jeevan jeevan  530 Nov  6 09:12 README.md','-rw-r--r-- 1 jeevan jeevan 2210 Nov  6 09:12 app.py','-rw-r--r-- 1 jeevan jeevan  690 Nov  6 09:12 deploy.yaml','-rw-r--r-- 1 jeevan jeevan 1840 Nov  6 09:12 main.tf','-rw-r--r-- 1 jeevan jeevan   45 Nov  6 09:12 requirements.txt','drwxr-xr-x 2 jeevan jeevan 4096 Nov  6 09:12 templates'];
+  var GLOG=['a3f9c21 (HEAD -> main, origin/main) ci: add Trivy image scan stage','7be04d8 feat: Kubernetes deployment manifests','c91d5a2 infra: provision AWS with Terraform','4d2e7f0 build: Dockerize Flask app','1b8a360 init: Flask app with database backend'];
+  var DR=[['CONTAINER ID','IMAGE','COMMAND','STATUS','PORTS','NAMES'],['8f3a1c2d9e41',APP+':latest','"python app.py"','Up 2 hours','0.0.0.0:5000->5000/tcp',APP]];
+  var KP=tbl([['NAME','READY','STATUS','RESTARTS','AGE'],[APP+'-6d8f9c7b5-4xk2p','1/1','Running','0','2h'],[APP+'-6d8f9c7b5-q9m7z','1/1','Running','0','2h']]);
+  var EX={
+    'pwd':['/home/jeevan/devops-lab'],
+    'id':['uid=1000(jeevan) gid=1000(jeevan) groups=1000(jeevan),991(docker)'],
+    'hostname':['devops-lab'],
+    'uname -a':['Linux devops-lab 6.1.112-122.189.amzn2023.x86_64 #1 SMP PREEMPT_DYNAMIC x86_64 x86_64 x86_64 GNU/Linux'],
+    'uptime':[' 09:12:01 up 12 days,  3:41,  1 user,  load average: 0.08, 0.03, 0.01'],
+    'df -h':['Filesystem      Size  Used Avail Use% Mounted on','/dev/nvme0n1p1  8.0G  1.9G  6.1G  24% /','tmpfs           475M     0  475M   0% /dev/shm'],
+    'free -h':['               total        used        free      shared  buff/cache   available','Mem:           949Mi       312Mi       401Mi       0.0Ki       235Mi       500Mi','Swap:             0B          0B          0B'],
+    'cat focus.txt':['automate deployments, build scalable cloud infrastructure, keep systems reliable'],
+    'cat /etc/os-release':['NAME="Amazon Linux"','VERSION="2023"','ID="amzn"','PRETTY_NAME="Amazon Linux 2023"'],
+    'ls':LSS,'ls -l':LSL,'ls -la':LSL,'ll':LSL,
+    'git status':['On branch main',"Your branch is up to date with 'origin/main'.",'','nothing to commit, working tree clean'],
+    'git log':GLOG,'git log --oneline':GLOG,
+    'git branch':['  dev','* main'],
+    'git pull':['Already up to date.'],
+    'git init':['Initialized empty Git repository in /home/jeevan/devops-lab/.git/'],
+    'git diff':[],
+    'git remote -v':['origin  git@github.com:jeevan/devops-lab.git (fetch)','origin  git@github.com:jeevan/devops-lab.git (push)'],
+    'git --version':['git version 2.40.1'],
+    'docker --version':['Docker version 25.0.8, build 0bab007'],
+    'docker ps':tbl(DR),
+    'docker ps -a':tbl(DR.concat([['c4b7e2a01f93','hello-world','"/hello"','Exited (0) 3 days ago','','eager_turing']])),
+    'docker images':tbl([['REPOSITORY','TAG','IMAGE ID','CREATED','SIZE'],[APP,'latest','5d1e7a90c3b2','2 hours ago','148MB'],['python','3.11-slim','a1b2c3d4e5f6','3 weeks ago','125MB']]),
+    'kubectl get pods':KP,'kubectl get pod':KP,'kubectl get po':KP,
+    'kubectl get nodes':tbl([['NAME','STATUS','ROLES','AGE','VERSION'],['devops-lab','Ready','control-plane','12d','v1.29.4']]),
+    'kubectl get svc':tbl([['NAME','TYPE','CLUSTER-IP','EXTERNAL-IP','PORT(S)','AGE'],['kubernetes','ClusterIP','10.96.0.1','<none>','443/TCP','12d'],['attendance-svc','NodePort','10.101.44.20','<none>','80:30080/TCP','2h']]),
+    'kubectl get deployments':tbl([['NAME','READY','UP-TO-DATE','AVAILABLE','AGE'],[APP,'2/2','2','2','2h']]),
+    'kubectl version --client':['Client Version: v1.29.4','Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3'],
+    'kubectl cluster-info':['Kubernetes control plane is running at https://127.0.0.1:6443'],
+    'terraform --version':['Terraform v1.7.5','on linux_amd64'],
+    'terraform init':['Initializing the backend...','Initializing provider plugins...','- Installing hashicorp/aws v5.40.0...','','Terraform has been successfully initialized!'],
+    'terraform plan':['Plan: 5 to add, 0 to change, 0 to destroy.'],
+    'aws --version':['aws-cli/2.15.30 Python/3.11.8 Linux/6.1.112 exe/x86_64.amzn.2023']
+  };
+  EX['kubectl get services']=EX['kubectl get svc'];
+  EX['kubectl get deploy']=EX['kubectl get deployments'];
+  var RE=[
+    [/^echo\s+(.*)$/i,function(m){return [m[1].replace(/^(["'])(.*)\1$/,'$2')];}],
+    [/^cat\s+(\S+)$/i,function(m){return ['cat: '+m[1]+': No such file or directory'];}],
+    [/^rm\s+-rf?\s+\/\s*$/i,["rm: it is dangerous to operate recursively on '/'",'rm: use --no-preserve-root to override this safeguard']],
+    [/^(mkdir|touch|cd|chmod|chown|cp|mv|rm|export|source|git add|git stash|systemctl (start|stop|restart|enable|disable))\b/i,[]],
+    [/^ls\b/i,LSS],
+    [/^date$/i,function(){return [new Date().toString().replace(/ GMT.*/,'')];}],
+    [/^free\b/i,function(){return EX['free -h'];}],
+    [/^df\b/i,function(){return EX['df -h'];}],
+    [/^systemctl status\s+(\S+)/i,function(m){var n=m[1].replace(/\.service$/,'');return ['● '+n+'.service - '+n,'     Loaded: loaded (/usr/lib/systemd/system/'+n+'.service; enabled; preset: disabled)','     Active: active (running) since Thu 2026-11-05 09:12:00 UTC; 1 day ago'];}],
+    [/^git commit\b.*?-m\s*["']?(.+?)["']?\s*$/i,function(m){return ['[main '+hex(7)+'] '+m[1],' 1 file changed, 3 insertions(+)'];}],
+    [/^git push\b/i,function(){return ['Enumerating objects: 5, done.','Counting objects: 100% (5/5), done.','Writing objects: 100% (3/3), 312 bytes | 312.00 KiB/s, done.','To github.com:jeevan/devops-lab.git','   a3f9c21..'+hex(7)+'  main -> main'];}],
+    [/^git clone\s+(\S+)/i,function(m){var n=m[1].replace(/\/$/,'').split('/').pop().replace(/\.git$/,'');return ["Cloning into '"+n+"'...",'remote: Enumerating objects: 42, done.','Receiving objects: 100% (42/42), done.'];}],
+    [/^git (checkout|switch) (-b|-c) (\S+)/i,function(m){return ["Switched to a new branch '"+m[3]+"'"];}],
+    [/^git (checkout|switch) (\S+)/i,function(m){return ["Switched to branch '"+m[2]+"'"];}],
+    [/^git\b/i,['Demo terminal. Try: git status, git log --oneline, git branch, git commit -m "msg", git push']],
+    [/^docker build\b.*?-t\s+(\S+)/i,function(m){return build(m[1]);}],
+    [/^docker build\b/i,function(){return build('app');}],
+    [/^docker run\b/i,function(){return [hex(64)];}],
+    [/^docker pull\s+(\S+)/i,function(m){var i=m[1].indexOf(':')>0?m[1]:m[1]+':latest';return ['Pulling from library/'+m[1].split(':')[0],'Status: Downloaded newer image for '+i];}],
+    [/^docker (stop|rm|start|restart)\s+(\S+)/i,function(m){return [m[2]];}],
+    [/^docker logs\b/i,FLASK],
+    [/^docker\b/i,['Demo terminal. Try: docker ps, docker images, docker build -t app ., docker run -d app']],
+    [/^kubectl apply\b/i,['deployment.apps/'+APP+' configured']],
+    [/^kubectl delete\s+(\S+)\s+(\S+)/i,function(m){return [m[1]+' "'+m[2]+'" deleted'];}],
+    [/^kubectl logs\b/i,FLASK],
+    [/^kubectl rollout status\b/i,['deployment "'+APP+'" successfully rolled out']],
+    [/^kubectl scale\b/i,['deployment.apps/'+APP+' scaled']],
+    [/^kubectl describe\b/i,['Name:         '+APP,'Namespace:    default','Replicas:     2 desired | 2 updated | 2 total | 2 available | 0 unavailable','Image:        '+APP+':latest']],
+    [/^kubectl\b/i,['Demo terminal. Try: kubectl get pods, nodes, svc, deployments, kubectl apply -f deploy.yaml']],
+    [/^trivy image\s+(\S+)/i,function(m){return [m[1]+' (debian 12.5)','Total: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)'];}],
+    [/^terraform apply\b/i,['Apply complete! Resources: 5 added, 0 changed, 0 destroyed.']],
+    [/^terraform\b/i,['Demo terminal. Try: terraform init, terraform plan, terraform apply']]
+  ];
+  function handle(c){
+    var low=c.toLowerCase(), nav=low.replace(/^\//,''), m;
+    if(Object.prototype.hasOwnProperty.call(cmds,nav)){cmds[nav]();return true;}
+    if(Object.prototype.hasOwnProperty.call(EX,low)){show(EX[low]);return true;}
+    if((m=/^sudo\s+(.+)$/i.exec(c))){
+      if(/^(su|-i|-s)\b/i.test(m[1])){show(['jeevan is not in the sudoers file. This incident will be reported 😏'],'warn');return true;}
+      return handle(m[1]);
+    }
+    for(var i=0;i<RE.length;i++){if((m=RE[i][0].exec(c))){var o=RE[i][1];show(typeof o==='function'?o(m):o);return true;}}
+    return false;
+  }
+  function run(raw){
+    var clean=raw.trim().replace(/\s+/g,' ');
+    if(!clean)return;
+    past.push(clean);pi=past.length;
+    if(clean.toLowerCase().replace(/^\//,'')!=='clear')say('$ '+clean,'you');
+    if(!handle(clean))say('bash: '+clean.split(' ')[0]+': command not found. Nice try. Type /help 😉','warn');
+  }
+  input.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){run(input.value);input.value='';}
+    else if(e.key==='ArrowUp'){if(pi>0){pi--;input.value=past[pi];}e.preventDefault();}
+    else if(e.key==='ArrowDown'){if(pi<past.length-1){pi++;input.value=past[pi];}else{pi=past.length;input.value='';}e.preventDefault();}
+    else if(e.ctrlKey&&e.key==='l'){out.innerHTML='';e.preventDefault();}
+  });
+  document.querySelectorAll('.chips button').forEach(function(b){b.addEventListener('click',function(){run(b.dataset.cmd);});});
+
+  /* skills filter the projects that use them */
+  var projs=[].slice.call(document.querySelectorAll('.proj')), note=document.getElementById('skillnote');
+  var skills=[].slice.call(document.querySelectorAll('.skill'));
+  function uses(p,s){return p.dataset.skills.split(' ').indexOf(s)>-1;}
+  skills.forEach(function(b){
+    var n=projs.filter(function(p){return uses(p,b.dataset.skill);}).length;
+    var s=document.createElement('small');s.textContent='x'+n;b.appendChild(s);
+    b.addEventListener('click',function(){
+      var on=b.getAttribute('aria-pressed')==='true';
+      skills.forEach(function(k){k.setAttribute('aria-pressed','false');});
+      if(on){projs.forEach(function(p){p.classList.remove('dim');});note.textContent='';return;}
+      b.setAttribute('aria-pressed','true');
+      var hits=0;
+      projs.forEach(function(p){var m=uses(p,b.dataset.skill);p.classList.toggle('dim',!m);if(m)hits++;});
+      note.textContent='🔦 '+b.firstChild.textContent+' shows up in '+hits+(hits===1?' project':' projects')+'. Tap it again to reset.';
+      go('projects');
+    });
+  });
+})();
+</script>
+</body>
+</html>
